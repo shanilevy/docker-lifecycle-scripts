@@ -10,7 +10,7 @@ dir('gradle-examples/4/gradle-example-ci-server') {
 
     stage 'Build Gradle'
         def artifactoryGradle = Artifactory.newGradleBuild()
-        artifactoryGradle.tool = 'gradle' // Tool name from Jenkins configuration
+        artifactoryGradle.tool = 'GRADLE_TOOL' // Tool name from Jenkins configuration
         artifactoryGradle.deployer repo:'libs-dev-local', server: artServer
         artifactoryGradle.resolver repo:'libs-dev', server: artServer
         artifactoryGradle.run rootDir: "gradle-examples/4/gradle-example-ci-server/", buildFile: 'build.gradle', tasks: 'clean artifactoryPublish', buildInfo: buildInfo
