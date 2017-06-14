@@ -54,6 +54,6 @@ dir('gradle-examples/4/gradle-example-ci-server') {
     ]
 
     // Promote build
-    server.promote promotionConfig
+    artServer.promote promotionConfig
     }
 }
