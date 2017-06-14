@@ -1,0 +1,59 @@
+node {
+  def artServer = Artifactory.server('yodafrog')
+   artServer.credentialsId='yodafrog-ci'
+   def buildInfo = Artifactory.newBuildInfo()
+   stage 'Checkout Gradle'
+        git url: 'https://github.com/jfrogtraining/project-examples.git'
+dir('gradle-examples/4/gradle-example-ci-server') {
+ sh './increment.sh'
+}
+
+    stage 'Build Gradle'
+        def artifactoryGradle = Artifactory.newGradleBuild()
+        artifactoryGradle.tool = 'gradle' // Tool name from Jenkins configuration
+        artifactoryGradle.deployer repo:'libs-dev-local', server: artServer
+        artifactoryGradle.resolver repo:'libs-dev', server: artServer
+        artifactoryGradle.run rootDir: "gradle-examples/4/gradle-example-ci-server/", buildFile: 'build.gradle', tasks: 'clean artifactoryPublish', buildInfo: buildInfo
+
+        artServer.publishBuildInfo buildInfo
+  
+         
+    stage('test')
+        {
+            //TODO some test
+        }
+     stage('Xray scan')
+        {
+          def xrayConfig = [
+            //Mandatory parameters
+            'buildName'         : env.JOB_NAME,
+            'buildNumber'       : env.BUILD_NUMBER,
+
+            //Optional
+            'failBuild'        : false
+          ]
+
+          // Scan xray build
+          def xrayResults = artServer.xrayScan xrayConfig
+          // Print full report from xray
+          echo xrayResults as String
+        }
+    stage('promote'){
+         def promotionConfig = [
+        // Mandatory parameters
+        'buildName'          : buildInfo.name,
+        'buildNumber'        : buildInfo.number,
+        'targetRepo'         : 'libs-release-local2',
+
+        // Optional parameters
+        'comment'            : 'ready for release',
+        'sourceRepo'         : 'libs-dev-local',
+        'status'             : 'Released',
+        'includeDependencies': true,
+        'copy'               : true
+    ]
+
+    // Promote build
+    server.promote promotionConfig
+    }
+}
