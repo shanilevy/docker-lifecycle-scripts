@@ -43,7 +43,7 @@ dir('gradle-examples/4/gradle-example-ci-server') {
         // Mandatory parameters
         'buildName'          : buildInfo.name,
         'buildNumber'        : buildInfo.number,
-        'targetRepo'         : 'libs-release-local2',
+        'targetRepo'         : 'libs-release-local',
 
         // Optional parameters
         'comment'            : 'ready for release',
