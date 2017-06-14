@@ -1,6 +1,6 @@
 {
     "targetRepo" : "docker-dev-local",
-    "dockerRepository" : "docker-framework",
+    "dockerRepository" : "docker-webinar-framework",
     "tag" : "2",
     "targetTag" : "latest",
     "copy": true
