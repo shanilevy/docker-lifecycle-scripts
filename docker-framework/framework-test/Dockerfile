@@ -1,6 +1,6 @@
-FROM us-demo-4x.jfrog.info:9002/docker-framework:latest
+FROM yodafrog.sas.jfrog.internal:5001/docker-webinar-framework:latest
 
-MAINTAINER Mark Galpin markg@jfrog.com
+MAINTAINER Jonathan ROQUELAURE jonathanr@jfrog.com
 
 ADD war/*.war /home/exec/tomcat/webapps/swampup.war
 

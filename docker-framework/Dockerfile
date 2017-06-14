@@ -1,6 +1,6 @@
-FROM us-demo-4x.jfrog.info:9002/ubuntu:latest
+FROM yodafrog.sas.jfrog.internal:5001/ubuntu:latest
 
-MAINTAINER Mark Galpin markg@jfrog.com
+MAINTAINER Jonathan ROQUELAURE jonathanr@jfrog.com
 
 RUN /bin/bash -c cd ~; cd /home ; mkdir -p exec
 ADD jdk/jdk-8-linux-x64.tar.gz /home/exec
