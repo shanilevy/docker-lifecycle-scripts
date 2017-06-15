@@ -73,7 +73,7 @@ node{
                 // Print full report from xray
                 echo xrayResults as String
                 }
-            stage('promote'){
+            stage('promote') {
                 def promotionConfig = [
                 // Mandatory parameters
                 'buildName'          : buildInfo.name,
