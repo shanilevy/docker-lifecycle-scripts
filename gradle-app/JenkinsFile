@@ -17,11 +17,11 @@ dir('gradle-examples/4/gradle-example-ci-server') {
 
         artServer.publishBuildInfo buildInfo
   
-         
-    stage('test')
-        {
-           dir('docker-app')
-           {
+      dir('docker-app')
+           {    
+            stage('test')
+                {
+          
                 def curlstr="curl -H 'X-JFrog-Art-Api:$pw' '$artServer.url"
                 def warverstr=curlstr+ "/api/search/latestVersion?g=org.jfrog.example.gradle&a=webservice&repos=libs-dev-local'"
                 sh warverstr +' > war/version.txt'
