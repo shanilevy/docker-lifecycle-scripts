@@ -1,4 +1,4 @@
-FROM us-demo-4x.jfrog.info:9003/docker-framework:latest
+FROM yodafrog.sas.jfrog.internal:5002/docker-webinar-framework:latest
 
 MAINTAINER Mark Galpin markg@jfrog.com
 
