@@ -1,6 +1,6 @@
 {
     "targetRepo" : "docker-prod-local",
-    "dockerRepository" : "docker-app",
+    "dockerRepository" : "docker-webinar-app",
     "tag" : "@",
     "targetTag" : "latest",
     "copy": true
