@@ -18,7 +18,7 @@ dir('gradle-examples/4/gradle-example-ci-server') {
         artServer.publishBuildInfo buildInfo
 }
 
-node{
+node {
     git url: 'https://github.com/jroquelaure/docker-lifecycle-scripts'
     def artServer = Artifactory.server('yodafrog')
     withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'yodafrog-ci',
