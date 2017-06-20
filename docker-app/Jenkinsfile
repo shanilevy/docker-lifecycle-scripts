@@ -128,8 +128,7 @@ def curlstr="curl -H 'X-JFrog-Art-Api:$pw' '$artServer.url"
                 // ]
 
                 // artServer.distribute distributionConfig
-
-              def distribStr=curlstr+'api/build/distribute/'+env.JOB_NAME+'/'+env.BUILD_NUMBER+"' -X POST -H 'Content-Type: application/json' "
+              def distribStr=curlstr+'api/distribute/docker-prod-local/docker-webinar-app/'+env.BUILD_NUMBER+"' -X POST -H 'Content-Type: application/json' "
               def dockerDistrib = distribStr+ "-T distributeDocker.json"
               println(dockerDistrib)
               sh dockerDistrib
