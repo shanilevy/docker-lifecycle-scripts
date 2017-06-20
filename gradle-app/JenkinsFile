@@ -95,6 +95,7 @@ node {
             {
               def distribStr=curlstr+'api/build/distribute/'+env.JOB_NAME+'/'+env.BUILD_NUMBER+"' -X POST -H 'Content-Type: application/json' "
               def warDistrib = distribStr+"-T distributeWar.json"
+              println(warDistrib)
               sh warDistrib
             }
         }
