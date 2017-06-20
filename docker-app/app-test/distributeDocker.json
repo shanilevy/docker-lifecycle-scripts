@@ -4,6 +4,5 @@
     "async" : "false",
     "targetRepos" : "butler-webinar",
     "packagesRepoPaths":["docker-prod-local/docker-webinar-app/@"],
-    "sourceRepos" : ["docker-prod-local"],
     "dryRun" : "false"
 }
