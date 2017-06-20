@@ -110,15 +110,14 @@ def curlstr="curl -H 'X-JFrog-Art-Api:$pw' '$artServer.url"
             def retagstr=curlstr+"api/docker/docker-prod-local/v2/promote' -X POST -H 'Content-Type: application/json' -T retag_out.json"
             sh retagstr
             }
-            // stage('distribute')
-            // {
-            //   def distribStr=curlstr+'api/build/distribute/'+env.JOB_NAME+'/'+env.BUILD_NUMBER+"' -X POST -H 'Content-Type: application/json' "
-            //   def dockerDistrib = distribStr+ "-T distributeDocker.json"
-            //   println(dockerDistrib)
-            //   sh dockerDistrib
-            //   def warDistrib = distribStr+"-T distributeWar.json"
-            //   sh warDistrib
-            // }
+            stage('distribute')
+            {
+              def distribStr=curlstr+'api/build/distribute/'+env.JOB_NAME+'/'+env.BUILD_NUMBER+"' -X POST -H 'Content-Type: application/json' "
+              def dockerDistrib = distribStr+ "-T distributeDocker.json"
+              println(dockerDistrib)
+              sh dockerDistrib
+             
+            }
         }
     }
 }

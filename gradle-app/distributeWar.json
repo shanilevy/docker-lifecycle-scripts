@@ -2,7 +2,7 @@
     "publish" : "true",
     "overrideExistingFiles" : "true",
     "async" : "false",
-    "targetRepo" : "jenkins-pipeline-demo",
+    "targetRepo" : "butler-webinar",
     "sourceRepos" : ["libs-release-local"],
     "dryRun" : "false"
 }
