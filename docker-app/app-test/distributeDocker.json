@@ -3,6 +3,7 @@
     "overrideExistingFiles" : "true",
     "async" : "false",
     "targetRepos" : "butler-webinar",
+    "packagesRepoPaths":["docker-prod-local/docker-webinar-app/$env.BUILD_NUMBER"]
     "sourceRepos" : ["docker-prod-local"],
     "dryRun" : "false"
 }
