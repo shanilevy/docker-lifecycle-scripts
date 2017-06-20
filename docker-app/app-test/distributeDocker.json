@@ -2,7 +2,7 @@
     "publish" : "true",
     "overrideExistingFiles" : "true",
     "async" : "false",
-    "targetRepos" : "butler-webinar",
+    "targetRepo" : "butler-webinar",
     "packagesRepoPaths":["docker-prod-local/docker-webinar-app/@"],
     "dryRun" : "false"
 }
