@@ -92,6 +92,8 @@ node {
             // Promote build
             artServer.promote promotionConfig
             }
+           }
+           dir('gradle-app'){
             stage('distribute')
             {
               def distribStr=curlstr+'api/build/distribute/'+env.JOB_NAME+'/'+env.BUILD_NUMBER+"' -X POST -H 'Content-Type: application/json' "
@@ -99,6 +101,6 @@ node {
               println(warDistrib)
               sh warDistrib
             }
-        }
+           }
     }
 }
