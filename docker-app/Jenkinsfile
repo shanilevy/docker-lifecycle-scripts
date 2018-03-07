@@ -37,7 +37,7 @@ dir('docker-app') {
     artServer.download(downloadSpec, buildInfo)
    }
    stage('Build and Deploy') {
-        def tagName='yodafrog.sas.jfrog.internal:5001/docker-webinar-app:'+env.BUILD_NUMBER
+        def tagName='docker-dev.yodafrog.sas.jfrog.internal/docker-webinar-app:'+env.BUILD_NUMBER
         docker.build(tagName)
         def artDocker= Artifactory.docker(uname, pw)
         artDocker.push(tagName, 'docker-dev', buildInfo)
@@ -63,7 +63,7 @@ artServer.password=pw
 def curlstr="curl -H 'X-JFrog-Art-Api:$pw' '$artServer.url"
     dir('docker-app/app-test') {
         stage('testing app') {
-            def imageName='yodafrog.sas.jfrog.internal:5001/docker-webinar-app'
+            def imageName='docker-dev.yodafrog.sas.jfrog.internal/docker-webinar-app'
             sh 'docker images | grep docker-webinar-app'
             println(imageName)
             sh 'docker rmi '+imageName+' || true'

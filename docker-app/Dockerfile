@@ -1,4 +1,4 @@
-FROM yodafrog.sas.jfrog.internal:5002/docker-webinar-framework:latest
+FROM docker-prod.yodafrog.sas.jfrog.internal/docker-webinar-framework:latest
 
 MAINTAINER Jonathan ROQUELAURE jonathanr@jfrog.com
 
