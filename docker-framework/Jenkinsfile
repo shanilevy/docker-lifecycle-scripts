@@ -52,7 +52,7 @@ node {
       stage('docker build') {
         buildInfo.env.collect()
         println('starting build '+env.BUILD_NUMBER)
-        def tagName='yodafrog.sas.jfrog.internal:5001/docker-webinar-framework:'+env.BUILD_NUMBER
+        def tagName='docker-dev.yodafrog.sas.jfrog.internal:8081/docker-webinar-framework:'+env.BUILD_NUMBER
         sh 'pwd'
         sh 'ls -al'
         sh 'cat Dockerfile'

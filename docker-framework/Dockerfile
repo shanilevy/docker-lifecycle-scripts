@@ -1,4 +1,4 @@
-FROM yodafrog.sas.jfrog.internal:5001/ubuntu:latest
+FROM docker-dev.yodafrog.sas.jfrog.internal:8081/ubuntu:latest
 
 MAINTAINER Jonathan ROQUELAURE jonathanr@jfrog.com
 
