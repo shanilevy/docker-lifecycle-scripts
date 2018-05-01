@@ -18,7 +18,7 @@ dir('gradle-examples/4/gradle-example-ci-server') {
 }
 
 node {
-    git url: 'https://github.com/jroquelaure/docker-lifecycle-scripts'
+    git url: 'https://github.com/shanilevy/docker-lifecycle-scripts'
     def artServer = Artifactory.server('Artifactroy-cluster-gcp')
     artServer.username='admin'
     artServer.password='password'  
