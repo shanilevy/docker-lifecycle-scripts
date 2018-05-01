@@ -31,10 +31,10 @@ node {
                
                 def warverstr=curlstr+ "/api/search/latestVersion?g=org.jfrog.example.gradle&a=webservice&repos=libs-dev-local'"
                 echo warverstr
-                print warverstr
-                sh warverstr +' > war/version.txt'
-                sh 'cat war/version.txt'
-                env.WARVER=readFile('war/version.txt')
+                print $warverstr
+                //sh warverstr +' > war/version.txt'
+                //sh 'cat war/version.txt'
+                //env.WARVER=readFile('war/version.txt')
                 def downloadSpec = """{
                 "files": [
                     {
