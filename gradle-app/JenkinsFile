@@ -22,7 +22,7 @@ node {
     def artServer = Artifactory.server('Artifactroy-cluster-gcp')
     artServer.username='admin'
     artServer.password='password'  
-    def curlstr="curl -H 'X-JFrog-Art-Api:$pw' '$artServer.url" 
+    //def curlstr="curl -H 'X-JFrog-Art-Api:$pw' '$artServer.url" 
     dir('docker-app')
            {
                stage('test')
