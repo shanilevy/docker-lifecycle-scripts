@@ -22,22 +22,22 @@ node {
     def artServer = Artifactory.server('Artifactroy-cluster-gcp')
     artServer.username='admin'
     artServer.password='password'  
-    //def curlstr="curl -H 'X-JFrog-Art-Api:$pw' '$artServer.url" 
+    def curlstr="curl -H 'X-JFrog-Art-Api:$pw' '$artServer.url" 
     dir('docker-app')
            {
                stage('test')
                 {
            
                
-                //def warverstr=curlstr+ "/api/search/latestVersion?g=org.jfrog.example.gradle&a=webservice&repos=libs-dev-local'"
-                //sh warverstr +' > war/version.txt'
-                //sh 'cat war/version.txt'
-                //env.WARVER=readFile('war/version.txt')
+                def warverstr=curlstr+ "/api/search/latestVersion?g=org.jfrog.example.gradle&a=webservice&repos=libs-dev-local'"
+                sh warverstr +' > war/version.txt'
+                sh 'cat war/version.txt'
+                env.WARVER=readFile('war/version.txt')
                 def downloadSpec = """{
                 "files": [
                     {
-                        //"pattern": "libs-dev-local/org/jfrog/example/gradle/webservice/"""+env.WARVER+"""/*.war",
-                        "pattern": "libs-dev-local/org/jfrog/example/gradle/webservice/1.1.5/*.war",
+                        "pattern": "libs-dev-local/org/jfrog/example/gradle/webservice/"""+env.WARVER+"""/*.war",
+                        //"pattern": "libs-dev-local/org/jfrog/example/gradle/webservice/1.1.5/*.war",
                         "target": "war/webservice.war",
                         "flat":"true"
                     }
