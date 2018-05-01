@@ -1,6 +1,6 @@
 node {
-  def artServer = Artifactory.server('yodafrog')
-   artServer.credentialsId='yodafrog-ci'
+  def artServer = Artifactory.server('Artifactroy-cluster-gcp')
+   //artServer.credentialsId='yodafrog-ci'
    def buildInfo = Artifactory.newBuildInfo()
    stage 'Checkout Gradle'
         git url: 'https://github.com/jfrogtraining/project-examples.git'
@@ -10,7 +10,7 @@ dir('gradle-examples/4/gradle-example-ci-server') {
 
     stage 'Build Gradle'
         def artifactoryGradle = Artifactory.newGradleBuild()
-        artifactoryGradle.tool = 'GRADLE_TOOL' // Tool name from Jenkins configuration
+        artifactoryGradle.tool = 'gradle' // Tool name from Jenkins configuration
         artifactoryGradle.deployer repo:'libs-dev-local', server: artServer
         artifactoryGradle.resolver repo:'libs-dev', server: artServer
         artifactoryGradle.run rootDir: "gradle-examples/4/gradle-example-ci-server/", buildFile: 'build.gradle', tasks: 'clean artifactoryPublish', buildInfo: buildInfo
@@ -19,12 +19,12 @@ dir('gradle-examples/4/gradle-example-ci-server') {
 }
 
 node {
-    git url: 'https://github.com/jroquelaure/docker-lifecycle-scripts'
-    def artServer = Artifactory.server('yodafrog')
-    withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'yodafrog-ci',
+    git url: 'https://github.com/shanilevy/docker-lifecycle-scripts'
+    def artServer = Artifactory.server('Artifactroy-cluster-gcp')
+    //withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'yodafrog-ci',
     usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
-    def uname=env.USERNAME
-    def pw=env.PASSWORD
+    def uname='admin'//env.USERNAME
+    def pw='password'//env.PASSWORD
     artServer.username=uname
     artServer.password=pw      
     def curlstr="curl -H 'X-JFrog-Art-Api:$pw' '$artServer.url" 
