@@ -1,6 +1,5 @@
 node {
-  def artServer = Artifactory.server('Artifactroy-cluster-gcp')
-   //artServer.credentialsId='yodafrog-ci'
+  def artServer = Artifactory.server('Artifactory-cluster-gcp')
    def buildInfo = Artifactory.newBuildInfo()
    stage 'Checkout Gradle'
         git url: 'https://github.com/jfrogtraining/project-examples.git'
@@ -19,10 +18,10 @@ dir('gradle-examples/4/gradle-example-ci-server') {
 }
 
 node {
-    git url: 'https://github.com/shanilevy/docker-lifecycle-scripts'
-    def artServer = Artifactory.server('Artifactroy-cluster-gcp')
-    artServer.username = 'admin'
-    artServer.password = 'password'     
+    git url: 'https://github.com/jroquelaure/docker-lifecycle-scripts'
+    def artServer = Artifactory.server('Artifactory-cluster-gcp')
+    artServer.username='admin'
+    artServer.password='password'  
     def curlstr="curl -H 'X-JFrog-Art-Api:$pw' '$artServer.url" 
     dir('docker-app')
            {
@@ -115,5 +114,4 @@ node {
             //   sh warDistrib
             }
            }
-    }
 }
