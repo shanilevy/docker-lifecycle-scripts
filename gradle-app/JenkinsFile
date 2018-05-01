@@ -21,12 +21,8 @@ dir('gradle-examples/4/gradle-example-ci-server') {
 node {
     git url: 'https://github.com/shanilevy/docker-lifecycle-scripts'
     def artServer = Artifactory.server('Artifactroy-cluster-gcp')
-    //withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'yodafrog-ci',
-    usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
-    def uname='admin'//env.USERNAME
-    def pw='password'//env.PASSWORD
-    artServer.username=uname
-    artServer.password=pw      
+    artServer.username = 'admin'
+    artServer.password = 'password'     
     def curlstr="curl -H 'X-JFrog-Art-Api:$pw' '$artServer.url" 
     dir('docker-app')
            {
