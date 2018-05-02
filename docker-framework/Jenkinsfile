@@ -4,9 +4,9 @@ node {
   
   sh "docker images -qa | xargs docker rmi -f || true" 
    // Get some code from a GitHub repository
-   git url: 'https://github.com/jroquelaure/docker-lifecycle-scripts'
-  def artServer = Artifactory.server('yodafrog')
-  withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'yodafrog-ci',
+   git url: 'https://github.com/shanilevy/docker-lifecycle-scripts'
+  def artServer = Artifactory.server('artifactory-shani-gcp')
+  withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'shani-gcp',
   usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
     def uname=env.USERNAME
     def pw=env.PASSWORD
@@ -52,7 +52,7 @@ node {
       stage('docker build') {
         buildInfo.env.collect()
         println('starting build '+env.BUILD_NUMBER)
-        def tagName='docker-dev.yodafrog.sas.jfrog.internal:8081/docker-webinar-framework:'+env.BUILD_NUMBER
+        def tagName='35.195.91.252:5002/docker-framework:'+env.BUILD_NUMBER
         sh 'pwd'
         sh 'ls -al'
         sh 'cat Dockerfile'
@@ -69,9 +69,9 @@ node {
   }
 }
 node {
-  git url: 'https://github.com/jroquelaure/docker-lifecycle-scripts'
-  def artServer = Artifactory.server('yodafrog')
-  withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'yodafrog-ci',
+  git url: 'https://github.com/shanilevu/docker-lifecycle-scripts'
+  def artServer = Artifactory.server('artifactory-shani-gcp')
+  withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'shani-gcp',
   usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
     def uname=env.USERNAME
     def pw=env.PASSWORD
