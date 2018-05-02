@@ -35,8 +35,9 @@ node {
                 sh 'echo ${warverstr} | tee war/version.txt'
                 
                 def var="1.1.2";
-                def destdir='war/version.txt'
-                echo "$var" > "$destdir"
+                def destdir=war/version.txt
+                //echo "$var" > "$destdir"
+                echo "$var"  >> war/version.txt
                 //sh warverstr +' > war/version.txt'
                 //sh 'cat war/version.txt'
                 //env.WARVER=readFile('war/version.txt')
