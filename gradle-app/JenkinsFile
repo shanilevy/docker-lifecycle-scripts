@@ -30,8 +30,7 @@ node {
            
                
                 def warverstr='1.1.2'//curlstr+ "/api/search/latestVersion?g=org.jfrog.example.gradle&a=webservice&repos=libs-dev-local'"
-                sh 'warverstr +\' > war/version.txt\''
-                //echo warverstr
+                sh 'echo hello'
                 //print $warverstr
                 sh warverstr +' > war/version.txt'
                 sh 'cat war/version.txt'
