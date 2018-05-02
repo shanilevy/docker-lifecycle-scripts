@@ -36,7 +36,7 @@ node {
                 
                 def var="1.1.2";
                 def destdir='war/version.txt'
-                echo "$var" > "$destdir
+                echo "$var" > "$destdir"
                 //sh warverstr +' > war/version.txt'
                 //sh 'cat war/version.txt'
                 //env.WARVER=readFile('war/version.txt')
