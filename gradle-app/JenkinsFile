@@ -1,6 +1,6 @@
 node {
   def artServer = Artifactory.server('Artifactory-cluster-gcp')
-   artServer.credentialsId='yodafrog-ci'
+   artServer.credentialsId='shani-gcp'
    def buildInfo = Artifactory.newBuildInfo()
    stage 'Checkout Gradle'
         git url: 'https://github.com/jfrogtraining/project-examples.git'
@@ -21,7 +21,7 @@ dir('gradle-examples/4/gradle-example-ci-server') {
 node {
     git url: 'https://github.com/shanilevy/docker-lifecycle-scripts'
     def artServer = Artifactory.server('Artifactory-cluster-gcp')
-    withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'yodafrog-ci',
+    withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'shani-gcp',
     usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
     def uname=env.USERNAME
     def pw=env.PASSWORD
