@@ -35,7 +35,7 @@ node {
                 sh 'echo ${warverstr} | tee war/version.txt'
                 
                 def var="1.1.2";
-                def destdir=version.txt
+                def destdir=/Users/Shared/Jenkins/Home/workspace/gradle-app/docker-app/war/version.txt
                 echo "$var" > "$destdir"
                 //echo "$var"  >> war/version.txt
                 //sh warverstr +' > war/version.txt'
