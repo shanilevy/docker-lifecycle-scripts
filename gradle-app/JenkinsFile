@@ -5,7 +5,11 @@ node {
    stage 'Checkout Gradle'
         git url: 'https://github.com/jfrogtraining/project-examples.git'
 dir('gradle-examples/4/gradle-example-ci-server') {
- sh './increment.sh'
+bash '''
+            #!/bin/bash
+            sh './increment.sh'
+     '''
+ //sh './increment.sh'
 }
 
     stage 'Build Gradle'
